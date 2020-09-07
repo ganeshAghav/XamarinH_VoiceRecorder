@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RxApp</name>
+    </assembly>
+    <members>
+        <member name="M:RxApp.Reflection.GetSetter``2(System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            http://blog.abodit.com/2011/09/convert-a-property-getter-to-a-setter/
+            Convert a lambda expression for a getter into a setter</member>
+        <member name="M:RxApp.Disposable.Compose(System.IDisposable[])">
+            <summary>
+            Returns an IDisposable that disposes a group of Disposables together.
+            </summary>
+            <param name="disposables">The disposables that will be disposed together.</param>
+        </member>
+        <member name="T:RxApp.NavigableBuilder">
+            <summary>
+            A builder for building an virtual application that uses a navigation stack to represent its state.
+            The output of the builder is a cold IObservable&lt;NavigationStack&gt; that can be subscribed to
+            in order to start the application.
+            </summary>
+        </member>
+        <member name="P:RxApp.NavigableBuilder.InitialState">
+            <summary>
+            A cold observable that bootstraps the application to an initial state. This observable should
+            return an initial value on subscription to set the inital state of the navigable's navigation
+            stack. In addition, this IObservable may reset the navigation stack anytime during the
+            application's lifecycle. Note, while the Navigable builder itself supports Observables that
+            publish an initial state with a depth of more than 1, not all UI connectors do and may not
+            behave correctly in that rare scenario.
+            </summary>
+        </member>
+        <member name="M:RxApp.NavigableBuilder.RegisterBinding``1(System.Func{``0,System.IDisposable})">
+            <summary>
+            Registers a function that can be used to create business logic binding to a model based
+            upon the model's runtime type.
+            </summary>
+            <param name="bind">The function that will create a binding.</param>
+            <typeparam name="TModel">The model type.</typeparam>
+        </member>
+        <member name="M:RxApp.NavigableBuilder.Build">
+            <summary>
+            Create's a cold observable that when subscribed to starts the application and publishes the current
+            state of the navigation stack.
+            </summary>
+        </member>
+        <member name="T:RxApp.NavigationStack">
+            <summary>
+            A persistent immutable stack that is used to represent the current navigation state.
+            </summary>
+        </member>
+    </members>
+</doc>
